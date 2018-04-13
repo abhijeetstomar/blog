@@ -1,2 +1,2 @@
 # blog
-Blog application created with Django.
+A complete blog application created with Django.
