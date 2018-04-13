@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,7 @@ USE_I18N = True
 
 USE_L10N = True
 
+# Activate/ Deactivate timezone support
 USE_TZ = True
 
 
