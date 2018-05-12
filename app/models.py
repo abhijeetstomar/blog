@@ -32,5 +32,6 @@ class Post(models.Model):
         # descending order is specified by the negative prefix
         ordering = ('-publish',)
 
+    # string method is the human readable representation of the object
     def __str__(self):
         return self.title
