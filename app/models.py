@@ -3,6 +3,11 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+# define custom model manager to retrieve all posts with published status
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager, self).get_queryset().filter(status='published')
+
 # define Post model (basic model for blog posts)
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -26,6 +31,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     # Show the status of the post
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
+    objects = models.Manager() # the default manager
+    published = PublishedManager() # the custom manager
 
     # contains meta data
     class Meta:
