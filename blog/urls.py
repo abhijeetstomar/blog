@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import path
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    path('admin/', admin.site.urls),
     # here we're telling django to include urlpatterns in the urls.py 
     # defined in app directory
-    url(r'^app/', include('app.urls', namespace='app', app_name='blog')),
+    url(r'^app/', include('app.urls')),
 ]
