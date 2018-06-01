@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+from django.core.urlresolvers import reverse
+
 # define custom model manager to retrieve all posts with published status
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -43,3 +45,9 @@ class Post(models.Model):
     # string method is the human readable representation of the object
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('app:post_detail', args=[self.publish.year,
+                                                self.publish.strftime('%m'),
+                                                self.publish.strftime('%d'),
+                                                self.slug])
