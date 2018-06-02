@@ -1,4 +1,4 @@
-{% entends "app/base.html" %}
+{% extends "app/base.html" %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -6,4 +6,6 @@
     <h1>{{ post.title }}</h1>
     <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
     {{ post.body|linebreaks }}
+    <!-- link to share post url -->
+    <p><a href="{% url "app:post_share" post.id %}">Share this post</a></p>
 {% endblock %}
